@@ -1,0 +1,1 @@
+export { runPrompt } from "./service";

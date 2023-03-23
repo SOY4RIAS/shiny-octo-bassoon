@@ -1,0 +1,10 @@
+{
+  "extends": "ts-config-single-spa",
+  "files": ["src/mfe-root-config.ts"],
+  "compilerOptions": {
+    "declarationDir": "dist",
+    "composite": true,
+  },
+  "include": ["src/**/*"],
+  "exclude": ["src/**/*.test*"]
+}

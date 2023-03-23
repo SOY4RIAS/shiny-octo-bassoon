@@ -1,0 +1,16 @@
+{
+  "name": "root",
+  "private": true,
+  "workspaces": [
+    "packages/*"
+  ],
+  "devDependencies": {
+    "lerna": "^6.5.1"
+  },
+  "scripts": {
+    "install": "lerna exec -- yarn install",
+    "postinstall": "yarn build:types",
+    "build:types": "lerna exec -- yarn build:types",
+    "start": "lerna exec -- yarn start"
+  }
+}
