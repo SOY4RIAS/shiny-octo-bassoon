@@ -3,6 +3,8 @@ import { PropsWithChildren, useEffect, useState } from "react";
 import { Field, Icon, Loading, MessageItem } from "@mfe/ui";
 import { useGPTService } from "../../hooks/useGPTService";
 import { useMessages } from "../../hooks/useMessages";
+import { getPromptText } from "@mfe/gpt-service";
+import { PromptSection } from "./PromptSection";
 
 interface Message {
   from: "user" | "bot";
@@ -11,13 +13,13 @@ interface Message {
 
 export const Container = () => {
   const [prompt, setPrompt] = useState<string>();
-  const { messages, setMessage } = useMessages();
+  const { messages, setMessage, clearMessages } = useMessages();
   const { mutateAsync: runPrompt, isLoading } = useGPTService();
 
   const handlePrompt = () => {
     setMessage("user", prompt);
     runPrompt(prompt).then((res) => {
-      setMessage("bot", res.data.choices[0].message.content);
+      setMessage("bot", getPromptText(res));
     });
     setPrompt("");
   };
@@ -32,7 +34,7 @@ export const Container = () => {
         </div>
         {isLoading && <MessageItem from="bot" component={<Loading />} />}
       </div>
-      <div className="sticky bottom-0 left-0 w-full border-t md:border-t-0 dark:border-white/20 md:border-transparent md:dark:border-transparent md:bg-vert-light-gradient bg-white dark:bg-gray-800 md:!bg-transparent md:bg-gradient-to-t	from-gray-800 pt-2 px-20">
+      <PromptSection onClear={clearMessages}>
         <Field
           type="text"
           onChange={(e) => setPrompt(e.currentTarget.value)}
@@ -42,7 +44,7 @@ export const Container = () => {
           }}
           value={prompt}
         />
-      </div>
+      </PromptSection>
     </>
   );
 };

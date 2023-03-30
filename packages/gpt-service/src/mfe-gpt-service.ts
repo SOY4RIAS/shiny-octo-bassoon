@@ -1,1 +1,1 @@
-export { runPrompt } from "./service";
+export { runPrompt, getPromptText } from "./service";

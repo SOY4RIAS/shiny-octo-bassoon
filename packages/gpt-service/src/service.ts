@@ -11,3 +11,9 @@ export const runPrompt = async (prompt: string) => {
     messages: [{ role: "user", content: prompt }],
   });
 };
+
+export const getPromptText = (
+  response: Awaited<ReturnType<typeof runPrompt>>
+) => {
+  return response.data.choices[0].message.content;
+};

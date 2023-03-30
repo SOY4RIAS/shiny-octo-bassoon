@@ -10,9 +10,13 @@ export const useMessages = () => {
     setMessagesState((messages) => [...messages, { from, text }]);
   };
 
+  const clearMessages = () => {
+    setMessagesState([]);
+  };
+
   useEffect(() => {
     localStorage.setItem("messages", JSON.stringify(messages));
   }, [messages]);
 
-  return { messages, setMessage };
+  return { messages, setMessage, clearMessages };
 };
