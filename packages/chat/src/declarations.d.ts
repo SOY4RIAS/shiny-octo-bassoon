@@ -41,3 +41,7 @@ declare module "*.svg" {
 declare module "@mfe/gpt-service" {
   export * from "@mfe/gpt-service/dist/mfe-gpt-service";
 }
+
+declare module "@mfe/ui" {
+  export * from "@mfe/ui/dist/mfe-ui";
+}

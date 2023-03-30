@@ -2,9 +2,10 @@
   "extends": "ts-config-single-spa",
   "compilerOptions": {
     "jsx": "react-jsx",
-    "declarationDir": "dist"
+    "declarationDir": "dist",
+    "declaration": true
   },
   "files": ["src/mfe-ui.tsx"],
-  "include": ["src/**/*"],
+  "include": ["src/**/*", "postcss.config.js"],
   "exclude": ["src/**/*.test*"]
 }
