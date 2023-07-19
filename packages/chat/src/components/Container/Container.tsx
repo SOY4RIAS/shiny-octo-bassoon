@@ -31,8 +31,8 @@ export const Container = () => {
           {messages.map((message: Message, index: number) => (
             <MessageItem key={index} {...message} />
           ))}
+          {isLoading && <MessageItem from="bot" component={<Loading />} />}
         </div>
-        {isLoading && <MessageItem from="bot" component={<Loading />} />}
       </div>
       <PromptSection onClear={clearMessages}>
         <Field
